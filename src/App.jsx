@@ -1,11 +1,11 @@
+import { BaseLayout } from "./Containers/BaseLayout";
 import "./App.css";
-import { BaseLayout } from "./Components/BaseLayout";
 
 function App() {
   return (
-    <>
+    <div className="App">
       <BaseLayout />
-    </>
+    </div>
   );
 }
 
