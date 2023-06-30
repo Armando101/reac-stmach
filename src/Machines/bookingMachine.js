@@ -27,7 +27,7 @@ const bookingMachine = createMachine(
               selectedCountry: (context, event) => event.selectedCountry,
             }),
           },
-          CANCEL: "initial",
+          CANCEL: { target: "initial", actions: "cleanContext" },
         },
       },
       tickets: {
@@ -52,6 +52,7 @@ const bookingMachine = createMachine(
       imprimirInicio: () => console.log("imprimir inicio"),
       imprimirEntrada: () => console.log("imprimir entry"),
       imprimirSalida: () => console.log("imprimir exit"),
+      cleanContext: assign({ selectedCountry: "", passengers: [] }),
     },
   }
 );
