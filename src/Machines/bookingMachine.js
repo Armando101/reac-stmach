@@ -78,7 +78,7 @@ const bookingMachine = createMachine(
       },
       passengers: {
         on: {
-          DONE: "tickets",
+          DONE: { target: "tickets", cond: "moreThanOnePassenger" },
           CANCEL: "initial",
           ADD: {
             target: "passengers",
@@ -94,6 +94,9 @@ const bookingMachine = createMachine(
       imprimirEntrada: () => console.log("imprimir entry"),
       imprimirSalida: () => console.log("imprimir exit"),
       cleanContext: assign({ selectedCountry: "", passengers: [] }),
+    },
+    guards: {
+      moreThanOnePassenger: (context) => context.passengers.length > 0,
     },
   }
 );
